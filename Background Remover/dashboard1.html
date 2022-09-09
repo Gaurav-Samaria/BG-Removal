@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>removal.ai</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dashboard-1.css">
+    
+   
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <img
+          src="https://removal.ai/wp-content/uploads/2020/10/logo-1.png"
+          alt=""
+          id="logo"
+        />
+        <hr />
+        <ul>
+          <li>
+            <a href="/Dashboard 1.html" id="selected"
+              ><i class="fa-solid fa-house sidebar-icons"></i>Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="/History.html"  class="unselected"
+              ><i class="fa-solid fa-clock-rotate-left sidebar-icons"></i
+              >History</a
+            >
+          </li>
+          <li>
+            <a href="/Profile.html" class="unselected"
+              ><i class="fa-solid fa-user sidebar-icons"></i>Profile</a
+            >
+          </li>
+          <li>
+            <a href="/Logout.html" class="unselected"
+              ><i class="fa-solid fa-arrow-right-from-bracket sidebar-icons"></i
+              >Logout</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="main-content">
+        <div class="upload-container">
+          <img
+            src="/Media/Cloud.png"
+            alt=""
+            id="upload-img"
+          />
+          <label for="upload-btn">Upload</label>
+          <input
+            type="file"
+            class="form-control rm-upload-file"
+            id="upload-btn"
+            name="rm_file_upload"
+            accept="image/png,image/jpg,image/jpeg"
+          />
+          <span>or Drag and Drop images</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

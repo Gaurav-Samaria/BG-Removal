@@ -1,0 +1,118 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+  }
+  body {
+    background-color: #EDF2FB;
+  }
+  h1 {
+    color: #FF5656;
+    font-size: 32px;
+  }
+  i {
+    margin-right: 15px;
+    font-size: 48px;
+  }
+  p {
+    color: #FF5656;
+    background-color: rgb(255, 205, 205);
+    font-size: 24px;
+    margin-top: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    border-radius: 10px;
+  }
+  label {
+    margin-top: 40px;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    font-weight: 600;
+  }
+  input {
+    padding: 1em 1em;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 4px 0px 0px rgba(175, 175, 175, 0.5);
+    font-size: 1em;
+  }
+  span {
+    color: #FF5656;
+    float: right;
+  }
+  button {
+    color: white;
+    background-color: #FF5656;
+    display: inline-block;
+    padding: 10px 40px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    margin-top: 50px;
+  }
+  #logo {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    width: 300px;
+  }
+  #selected {
+    color: #FF5656;
+  }
+  #checkbox-label {
+    color: #FF5656;
+    margin-left: 5px;
+  }
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    width: 50%;
+    height: 100vh;
+    border-right: 3px solid rgb(226, 226, 226);
+    position: sticky;
+  }
+  .main-content {
+    margin: 3em 7em;
+    width: 70vw;
+    height: 70vh;
+    border-radius: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  .unselected {
+    opacity: 0.6;
+  }
+  .email-container,
+  .password-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .checkbox-container {
+    margin-top: 10px;
+  }
+  .bg-removed-img-1 {
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 45%;
+    position: absolute;
+    top: 7em;
+
+  }
+  .bg-removed-img-2 {
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 45%;
+    position: absolute;
+    top: 21em;
+
+  }

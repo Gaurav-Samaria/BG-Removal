@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>removal.ai</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'logout.css' %}">
+
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <img
+          src="https://removal.ai/wp-content/uploads/2020/10/logo-1.png"
+          alt=""
+          id="logo"
+        />
+        <img
+        src="{% static 'cover 1.png' %}"
+        alt="" class="bg-removed-img-1" />
+        <img
+        src="{% static 'cover 2.png' %}"
+        alt="" class="bg-removed-img-2" />
+      </div>
+        <div class="main-content">
+          <h1>
+            <i class="fa-solid fa-arrow-right-to-bracket"></i>Login
+          </h1>
+          <p>Welcome Back!</p>
+          {% if message %}
+            {{ message }}
+          {% endif %}
+          <form method="post" action="/login/">
+            {% csrf_token %}
+            <div class="email-container">
+              <label for="uname">Username</label>
+              <input type="text" id="uname" name="uname" required/>
+            </div>
+            <div class="password-container">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" required/>
+            </div>
+            <div class="checkbox-container">
+              <input type="checkbox" name="checkbox" id="checkbox" />
+              <label for="checkbox" id="checkbox-label">Remember me</label>
+               <span>Forgot Password ?</span>
+            </div>
+            <button type="submit">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

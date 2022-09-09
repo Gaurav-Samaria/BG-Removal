@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>removal.ai</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'dashboard-2.css' %}">
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <img
+          src="https://removal.ai/wp-content/uploads/2020/10/logo-1.png"
+          alt=""
+          id="logo"
+        />
+        <hr />
+        <ul>
+          <li>
+            <a href="{% url 'home' %}" id="selected"
+              ><i class="fa-solid fa-house sidebar-icons"></i>Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'history' %}" class="unselected"
+              ><i class="fa-solid fa-clock-rotate-left sidebar-icons"></i
+              >History</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'profile' %}" class="unselected"
+              ><i class="fa-solid fa-user sidebar-icons"></i>Profile</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'logout' %}" class="unselected"
+              ><i class="fa-solid fa-arrow-right-from-bracket sidebar-icons"></i
+              >Logout</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="main-content">
+        <div class="top-bar">
+          <h5 onclick="show1()">Original</h5>
+          <h5 onclick="show2()">Remove Background</h5>
+        </div>
+        <img id="img-1"
+        src="/media/{{ image.image }}"
+        alt="test" class="bg-removed-img" style="display: none;"/>
+        <img id="img-2"
+        src="{{ new_image.updated_image }}"
+        alt="test" class="bg-removed-img" />
+        <div class="download-container">
+          <i class="fa-solid fa-download"></i>
+          <a href="{{ new_image.updated_image }}" id="download-btn" download target="_blank">Download</a>
+        </div>
+      </div>
+    </div>
+    <script>
+      function show1(){
+        document.getElementById("img-2").style.display = "none";
+        document.getElementById("img-1").style.display = "unset";
+      }
+      function show2(){
+        document.getElementById("img-1").style.display = "none";
+        document.getElementById("img-2").style.display = "unset";
+      }
+    </script>
+  </body>
+</html>

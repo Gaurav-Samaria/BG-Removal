@@ -1,0 +1,301 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>removal.ai</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+      }
+      body {
+        background-color: rgb(243, 243, 243);
+      }
+      li {
+        list-style: none;
+        padding: 20px;
+        font-size: 22px;
+        margin-top: 40px;
+      }
+      a {
+        text-decoration: none;
+        color: black;
+        text-align: left;
+        position: absolute;
+        left: 10px;
+      }
+      ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+      }
+      img {
+        margin: 20px;
+      }
+      hr {
+        width: 100%;
+        color: rgb(248, 248, 248);
+        opacity: 0.1;
+        margin-top: 10px;
+      }
+      label {
+        cursor: pointer;
+        text-transform: uppercase;
+        font-size: 18px;
+        height: 57px;
+        line-height: 57px;
+        display: inline-block;
+        color: orangered;
+        padding: 0 30px;
+        background: rgb(243, 243, 243);
+        margin-bottom: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 4px;
+        width: 200px;
+        text-align: center;
+      }
+      span {
+        margin-top: 10px;
+        opacity: 0.6;
+        font-weight: normal;
+      }
+      #logo {
+        margin-top: 30px;
+      }
+      #selected {
+        color: orangered;
+      }
+      #upload-btn {
+        display: none;
+      }
+      #upload-img {
+        width: 20%;
+        height: 40%;
+        margin-top: 40px;
+      }
+      .container {
+        display: flex;
+        justify-content: space-between;
+      }
+      .sidebar {
+        background-color: white;
+        max-width: 300px;
+        height: 100vh;
+        border-right: 3px solid rgb(226, 226, 226);
+      }
+      .main-content {
+        border: 7px dashed rgb(202, 202, 202);
+        background-color: white;
+        margin: auto;
+        width: 70vw;
+        height: 70vh;
+        border-radius: 10px;
+      }
+      .sidebar-icons {
+        margin-right: 20px;
+        margin-left: 20px;
+      }
+      .upload-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+      .unselected {
+        opacity: 0.6;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <img
+          src="https://removal.ai/wp-content/uploads/2020/10/logo-1.png"
+          alt=""
+          id="logo"
+        />
+        <hr />
+        <ul>
+          <li>
+            <a href="/" id="selected"
+              ><i class="fa-solid fa-house sidebar-icons"></i>Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'history' %}" class="unselected"
+              ><i class="fa-solid fa-clock-rotate-left sidebar-icons"></i
+              >History</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'profile' %}" class="unselected"
+              ><i class="fa-solid fa-user sidebar-icons"></i>Profile</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'logout' %}" class="unselected"
+              ><i class="fa-solid fa-arrow-right-from-bracket sidebar-icons"></i
+              >Logout</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="main-content">
+        <div class="upload-container">
+          <img
+            src="https://imgs.search.brave.com/WP5a48_CQhT7JPRGfH0WPEMHax1nf7YNcnDxgIz3ioo/rs:fit:256:256:1/g:ce/aHR0cDovL2ZpbGVz/LnNvZnRpY29ucy5j/b20vZG93bmxvYWQv/c3lzdGVtLWljb25z/L3dpbmRvd3MtOC1t/ZXRyby1pbnZlcnQt/aWNvbnMtYnktZGFr/aXJieTMwOS9wbmcv/NTEyeDUxMi9PZmZp/Y2UlMjBBcHBzL01T/JTIwT2ZmaWNlJTIw/VXBsb2FkJTIwQ2Vu/dGVyLnBuZw"
+            alt=""
+            id="upload-img"
+          />
+          <form action="{% url 'home' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+          <label for="upload-btn">Upload</label>
+          <input
+            type="file"
+            class="form-control rm-upload-file"
+            id="upload-btn"
+            name="rm_file_upload"
+            accept="image/png,image/jpg,image/jpeg"
+            required
+          />
+          <span>or Drag and Drop images</span>
+          
+          <button type="submit">Submit</button><br>
+          {% if message %}
+            {{ message }}
+          {% endif %}
+          <span id="show_name"></span>
+        </form>
+        </div>
+      </div>
+    </div>
+    <script>
+        var input = document.getElementById( 'upload-btn' );
+        var infoArea = document.getElementById( 'show_name' );
+        input.addEventListener( 'change', showFileName );
+        function showFileName( event ) { 
+          var input = event.srcElement;
+          var fileName = input.files[0].name;
+          infoArea.textContent = 'File name: ' + fileName;
+        }
+    </script>
+  </body>
+</html> -->
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>removal.ai</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'dashboard-1.css' %}">
+    
+   
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <img
+          src="https://removal.ai/wp-content/uploads/2020/10/logo-1.png"
+          alt=""
+          id="logo"
+        />
+        <hr />
+        <ul>
+          <li>
+            <a href="/" id="selected"
+              ><i class="fa-solid fa-house sidebar-icons"></i>Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'history' %}" class="unselected"
+              ><i class="fa-solid fa-clock-rotate-left sidebar-icons"></i
+              >History</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'profile' %}" class="unselected"
+              ><i class="fa-solid fa-user sidebar-icons"></i>Profile</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'logout' %}" class="unselected"
+              ><i class="fa-solid fa-arrow-right-from-bracket sidebar-icons"></i
+              >Logout</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="main-content">
+        <div class="upload-container">
+          <img
+            src="{% static 'Cloud.png' %}"
+            alt=""
+            id="upload-img"
+          />
+          <form action="{% url 'home' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+          <label for="upload-btn">Upload</label>
+          <input
+            type="file"
+            class="form-control rm-upload-file"
+            id="upload-btn"
+            name="rm_file_upload"
+            accept="image/png,image/jpg,image/jpeg"
+            required
+          />
+          <span>or Drag and Drop images</span>
+          
+          <button type="submit">Submit</button><br>
+          {% if message %}
+            {{ message }}
+          {% endif %}
+          <span id="show_name"></span>
+        </form>
+        </div>
+      </div>
+    </div>
+    <script>
+      var input = document.getElementById( 'upload-btn' );
+      var infoArea = document.getElementById( 'show_name' );
+      input.addEventListener( 'change', showFileName );
+      function showFileName( event ) { 
+        var input = event.srcElement;
+        var fileName = input.files[0].name;
+        infoArea.textContent = 'File name: ' + fileName;
+      }
+  </script>
+  </body>
+</html>

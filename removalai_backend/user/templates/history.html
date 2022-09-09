@@ -1,0 +1,353 @@
+{% load static %}
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>removal.ai</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+      }
+      body {
+        background-color: rgb(243, 243, 243);
+      }
+      li {
+        list-style: none;
+        padding: 20px;
+        font-size: 22px;
+        margin-top: 40px;
+      }
+      a {
+        text-decoration: none;
+        color: black;
+        text-align: left;
+        position: absolute;
+        left: 10px;
+      }
+      ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+      }
+      img {
+        margin: 20px;
+      }
+      hr {
+        width: 100%;
+        color: rgb(248, 248, 248);
+        opacity: 0.1;
+        margin-top: 10px;
+      }
+      table {
+        padding: 25px;
+        border-collapse: separate;
+        border-spacing: 0 5px;
+        width: 100%;
+      }
+
+      th,
+      td {
+        width: 30%;
+        text-align: center;
+        border-collapse: separate;
+        border-spacing: 5px 5px;
+      }
+      thead tr td {
+        border-bottom: 1px solid red;
+        border-collapse: separate;
+        border-spacing: 5px 5px;
+      }
+      td {
+        padding-top: 50px;
+        border-collapse: separate;
+        border-spacing: 5px 5px;
+      }
+      h1 {
+        font-size: 48px;
+        letter-spacing: 2px;
+      }
+      p {
+        font-size: 18px;
+        padding-top: 6px;
+      }
+
+      #heading {
+        color: orangered;
+        position: absolute;
+        top: 230px;
+      }
+      #logo {
+        margin-top: 30px;
+      }
+      #selected {
+        color: orangered;
+      }
+      .container {
+        display: flex;
+        justify-content: space-between;
+      }
+      .sidebar {
+        background-color: white;
+        max-width: 300px;
+        height: 100vh;
+        border-right: 3px solid rgb(226, 226, 226);
+      }
+      .main-content {
+        background-color: white;
+        margin: auto;
+        margin-top: 300px;
+        width: 70vw;
+        height: 70vh;
+        border-radius: 10px;
+      }
+      .unselected {
+        opacity: 0.6;
+      }
+      .sidebar-icons {
+        margin-right: 20px;
+        margin-left: 20px;
+      }
+      .boxes {
+        position: absolute;
+        top: 30px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .first-box {
+        margin-right: 20px;
+      }
+      .first-box,
+      .second-box {
+        background-color: orangered;
+        color: white;
+        width: 34.2vw;
+        height: 25vh;
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 60px 20px 60px;
+      }
+      .first-box > div:nth-child(2) > i,
+      .second-box > div:nth-child(2) > i {
+        font-size: 76px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+      thead::after {
+        content: "";
+        position: absolute;
+        border: 2px solid rgb(243, 243, 243);
+        width: 100%;
+        margin-top: 20px;
+      }
+      tr::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <img
+          src="https://removal.ai/wp-content/uploads/2020/10/logo-1.png"
+          alt=""
+          id="logo"
+        />
+        <hr />
+        <ul>
+          <li>
+            <a href="/" class="unselected"
+              ><i class="fa-solid fa-house sidebar-icons"></i>Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'history' %}" id="selected"
+              ><i class="fa-solid fa-clock-rotate-left sidebar-icons"></i
+              >History</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'profile' %}" class="unselected"
+              ><i class="fa-solid fa-user sidebar-icons"></i>Profile</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'logout' %}" class="unselected"
+              ><i class="fa-solid fa-arrow-right-from-bracket sidebar-icons"></i
+              >Logout</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="main-content">
+        <div class="boxes">
+          <div class="first-box">
+            <div>
+              <h1>{{ data.images_used }}</h1>
+              <p>Images Used</p>
+            </div>
+            <div>
+              <i class="fa-solid fa-mountain-sun"></i>
+            </div>
+          </div>
+          <div class="second-box">
+            <div>
+              <h1>{{ data.images_left }}</h1>
+              <p>Uses Left</p>
+            </div>
+            <div><i class="fa-solid fa-arrow-rotate-right"></i></div>
+          </div>
+        </div>
+        <h2 id="heading">
+          <i
+            class="fa-solid fa-clock-rotate-left"
+            style="margin-right: 15px"
+          ></i
+          >Usage History
+        </h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Images Uploaded</th>
+              <th>Date</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for t in transactions %}
+            <tr>
+              <td>{{ t.uploads_till_now }}</td>
+              <td>{{ t.created_date|date }}</td>
+              <td>{{ t.created_date|date:"g:i a" }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>removal.ai</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'history.css' %}">
+
+  
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <img
+          src="https://removal.ai/wp-content/uploads/2020/10/logo-1.png"
+          alt=""
+          id="logo"
+        />
+        <hr />
+        <ul>
+          <li>
+            <a href="/" class="unselected"
+              ><i class="fa-solid fa-house sidebar-icons"></i>Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'history' %}" id="selected"
+              ><i class="fa-solid fa-clock-rotate-left sidebar-icons"></i
+              >History</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'profile' %}" class="unselected"
+              ><i class="fa-solid fa-user sidebar-icons"></i>Profile</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'logout' %}" class="unselected"
+              ><i class="fa-solid fa-arrow-right-from-bracket sidebar-icons"></i
+              >Logout</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="main-content">
+        <div class="boxes">
+          <div class="first-box">
+            <div>
+              <h1>{{ data.images_used }}</h1>
+              <p>Images Used</p>
+            </div>
+            <div>
+              <i class="fa-solid fa-mountain-sun"></i>
+            </div>
+          </div>
+          <div class="second-box">
+            <div>
+              <h1>{{ data.images_left }}</h1>
+              <p>Uses Left</p>
+            </div>
+            <div><i class="fa-solid fa-arrow-rotate-right"></i></div>
+          </div>
+        </div>
+        <!-- <h2 id="heading">
+          <i
+            class="fa-solid fa-clock-rotate-left"
+            style="margin-right: 15px"
+          ></i
+          >Usage History
+        </h2> -->
+        <table>
+          <thead>
+            <tr>
+              <th>Images Uploaded</th>
+              <th>Date</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for t in transactions %}
+            <tr>
+              <td>{{ t.uploads_till_now }}</td>
+              <td>{{ t.created_date|date }}</td>
+              <td>{{ t.created_date|date:"g:i a" }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

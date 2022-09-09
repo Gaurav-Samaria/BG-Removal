@@ -1,0 +1,214 @@
+* {
+    font-family: 'Nunito', sans-serif;
+}
+body{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    padding: 0;
+    margin: 0;
+    background-color:#EDF2FB ;
+}
+
+.nav{
+    background-color: white;
+    width: 100%;
+    box-shadow: 0px 3px 5px rgb(0, 0, 0,0.5);
+    z-index: 1;
+}
+.profile-wrapper{
+    background-color: #EDF2FB;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2em;
+    margin: 0 3em 0 0;
+    place-content: start;
+    padding: 1em 0 0 0;
+    grid-column: 2 / 3;
+}
+.card{
+    width: 100%;
+    height: 20em;
+    box-shadow: 0px 3px 2px rgb(0, 0, 0,0.2);
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 1em;
+    position: relative;
+    margin-bottom: 0;
+}
+.profile-image{
+    width: 130px;
+    height: 130px;
+    background-color: white;
+    background-image: url("/Media/profile.png");
+    background-size: cover;
+    border-radius: 5px;
+    box-shadow: 0px 3px 5px rgb(0, 0, 0,0.2);
+    position: absolute;
+    top: 2em;
+    left: 1em;
+}
+.profile-label{
+    font-size: 1.4em;
+    line-height: 0.7em;
+    font-weight: 700;
+    margin-bottom: 0.5em;
+    color: rgb(122, 122, 122);
+}
+.profile-label span{
+    color: #FF5656;
+    font-weight: 600;
+    font-size: 0.7em;
+}
+.image-label{
+    position: absolute;
+    top :1.3em;
+    left: 10.5em;
+}
+.stats-label{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    line-height: 1em;
+    left : 1.3em;
+    bottom : 1em;
+    font-size: 0.9em;
+}
+.profile-label2{
+    font-size: 1.6em;
+    font-weight: 700;
+    line-height: 0.7em;
+    color: #666666;
+    padding-right: 1em;
+
+}
+.profile-label2 span{
+    font-weight: 800;
+    color: #FF5656;
+    line-height: 0.08em;
+}
+
+.heading-primary{
+    color: #FF5656;
+    margin: 1em 0 0 0;
+    font-size: 1.7em;
+}
+
+.full-card{
+    grid-column: 1/3;
+    margin: 1em 0 0 0;
+    grid-template-columns: 1fr 1fr;
+    display: grid;
+    gap: 10px;
+    place-content: center;
+    height: 21em;
+}
+
+.input-fields{
+    width: 100%;
+    margin-top: 1em;
+    margin-left:2em;
+
+}
+.input-fields label{
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #FF5656;
+}
+.input-fields input{
+    font-size: 1.5em;
+    font-weight: 600;
+    padding: 0.4em 0;
+    padding-left: 0.5em;
+    width: 15em;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    margin: 0.5em 0 0 0;
+}
+.long-input {
+    grid-column: 1/3;
+    margin-top: 1em;
+}
+.long-input input{
+    width: 90%;
+}
+.profile-button{
+    margin-left: 2em;
+    margin-top: 1em;
+    padding: 0.7em 0.5em;
+    font-size: 1em;
+    width: 40%;
+    font-weight: 700;
+    color: #ffff;
+    background-color: #FF5656;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.profile-button:hover{
+    background-color: #d41212;
+}
+.card-2 .profile-label2{
+    left: 1em;
+    top: 1em;
+    position: absolute;
+}
+.rocket{
+    width: 170px;
+    height: 170px;
+    background-image: url("/Media/rocket.png");
+    background-size: cover;
+    position: absolute;
+    right: 2em;
+    top: 4em;
+}
+.sidebar {
+    background-color: white;
+    max-width: 300px;
+    height: 100vh;
+    border-right: 3px solid rgb(226, 226, 226);
+    position: fixed;
+    
+  }
+  .sidebar-icons {
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+  #selected {
+    color: #FF5656;
+  }
+  .unselected {
+    opacity: 0.6;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+    text-align: left;
+    position: absolute;
+    left: 10px;
+  }
+  li {
+    list-style: none;
+    padding: 20px;
+    font-size: 22px;
+    margin-top: 40px;
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  hr {
+    width: 100%;
+    color: rgb(248, 248, 248);
+    opacity: 0.1;
+    margin-top: 10px;
+  }
+  #logo {
+    margin-top: 30px;
+  }
+  img {
+    margin: 20px;
+  }
